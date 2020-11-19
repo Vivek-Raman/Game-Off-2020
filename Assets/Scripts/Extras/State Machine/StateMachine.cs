@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
@@ -14,6 +15,18 @@ public class StateMachine : MonoBehaviour
     {
         currentState?.OnStateTick();
     }
+
+    protected void FixedUpdate()
+    {
+        currentState?.OnStateFixedTick();
+    }
+
+    #if UNITY_EDITOR && true
+    private void OnGUI()
+    {
+        GUILayout.TextArea(currentState.ToString());
+    }
+    #endif
 
     public void SetState(State toSet)
     {

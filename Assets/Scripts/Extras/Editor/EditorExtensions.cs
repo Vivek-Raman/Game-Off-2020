@@ -7,6 +7,26 @@ using Object = System.Object;
 
 public class EditorExtensions : Editor
 {
+    [MenuItem("Extensions/Set Ground Collider Bounds to Renderer Bounds")]
+    private static void SetFloorBounds()
+    {
+        try
+        {
+            Transform groundParent = GameObject.Find("Ground Parent").transform;
+            foreach (Transform ground in groundParent)
+            {
+                BoxCollider2D collider = ground.GetComponent<BoxCollider2D>();
+                SpriteRenderer renderer = ground.GetComponent<SpriteRenderer>();
+
+                collider.size = renderer.size;
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
+
+    }
 
     #region Lock Inspector
     // credit: https://forum.unity.com/threads/shortcut-key-for-lock-inspector.95815/

@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField][Range(0f, 10f)] private float movementSpeed = 4f;
     [SerializeField][Range(0f, 10f)] private float jumpSpeed = 8f;
-    [SerializeField][Range(-20f, 0f)] private float gravity = -10f;
+    [SerializeField][Range(-5f, 0f)] private float gravity = -10f;
     
     [SerializeField][Range(0f, 1f)] private float airControlModifier = 0.8f;
 
@@ -42,9 +42,8 @@ public class PlayerMovement : MonoBehaviour
              velocity.x *= airControlModifier;
              velocity.y += gravity;
         }
-
         // jump if buffered
-        if (jumpIsBuffered)
+        else if (jumpIsBuffered)
         {
             velocity.y = jumpSpeed;
             jumpIsBuffered = false;
