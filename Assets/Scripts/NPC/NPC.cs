@@ -5,10 +5,12 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    [SerializeField] private uint ID = 1;
+    public uint ID = 1;
+    public DialogueSet dialogue = null;
 
     public override string ToString()
     {
         return "NPC " + ID.ToString();
     }
+
 }
